@@ -22,7 +22,7 @@ public class MainActiviy extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         dWebView = getView(R.id.webview);
-        dWebView.loadUrl("http://192.168.1.17:8081/#/");
+        dWebView.loadUrl("http://10.4.1.90:8080/");
         DWebView.setWebContentsDebuggingEnabled(true);
         dWebView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
     }
