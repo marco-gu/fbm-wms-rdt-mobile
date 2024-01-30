@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ImageCaptureActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/layout_main">
+
+
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/cargo_info_container"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@color/black">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/cargo_label"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:paddingBottom="15dp"-->
+<!--                android:textAlignment="center"-->
+<!--                android:textColor="@color/white" />-->
+<!--        </LinearLayout>-->
+
+        <LinearLayout
+            android:id="@+id/top_button_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/status_color"
+            android:gravity="end"
+            android:orientation="horizontal"
+            android:paddingTop="16sp"
+            android:paddingBottom="16dp"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageButton
+                android:id="@+id/back_icon"
+                android:layout_width="52dp"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icon_header_back" />
+
+            <ImageButton
+                android:id="@+id/pause_btn_new"
+                android:layout_width="52dp"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icon_pause_2"
+                android:visibility="invisible" />
+
+            <ImageButton
+                android:id="@+id/home_btn"
+                android:layout_width="52dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="@dimen/space_4x"
+                android:layout_weight="1"
+                android:background="@null"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icon_header_home" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/camera_area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/top_button_container"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/space_24x"
+            android:paddingEnd="@dimen/space_24x"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextureView
+                android:id="@+id/textureView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_330"
+                android:layout_below="@id/top_button_container"
+                android:layout_marginTop="10dp" />
+
+            <ImageButton
+                android:id="@+id/photoButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="-55dp"
+                android:background="#00ffffff"
+                android:onClick="takePictures"
+                android:scaleType="fitXY"
+                android:src="@drawable/photo"
+                tools:ignore="OnClick" />
+
+        </LinearLayout>
+
+        <!--        <LinearLayout-->
+        <!--            android:id="@+id/camera_area_record"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_below="@id/camera_area"-->
+        <!--            android:layout_marginTop="10dp"-->
+        <!--            android:gravity="center_vertical"-->
+        <!--            android:padding="@dimen/space_5x"-->
+        <!--            app:layout_constraintTop_toTopOf="parent">-->
+
+        <!--            <TextView-->
+        <!--                android:layout_width="0dp"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_weight="8"-->
+        <!--                android:paddingStart="@dimen/space_16x"-->
+        <!--                android:text="@string/imageRecords"-->
+        <!--                android:textColor="@color/black"-->
+        <!--                android:textSize="16sp"-->
+        <!--                android:textStyle="bold" />-->
+        <!--        </LinearLayout>-->
+
+        <HorizontalScrollView
+            android:id="@+id/horizontalScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/camera_area"
+            android:layout_marginTop="10dp"
+            android:paddingStart="@dimen/space_24x"
+            android:paddingEnd="@dimen/space_24x">
+
+            <LinearLayout
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:id="@+id/horizontalScrollViewItemContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal" />
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+        <!--        <LinearLayout-->
+        <!--            android:id="@+id/ll2"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_below="@id/horizontalScrollView"-->
+        <!--            android:layout_marginTop="10dp"-->
+        <!--            android:gravity="center_vertical"-->
+        <!--            android:paddingStart="@dimen/space_24x"-->
+        <!--            android:paddingEnd="@dimen/space_24x"-->
+        <!--            app:layout_constraintTop_toTopOf="parent">-->
+
+        <!--            <RelativeLayout-->
+        <!--                android:id="@+id/cartonIDViewLayout"-->
+        <!--                android:layout_width="fill_parent"-->
+        <!--                android:layout_height="wrap_content">-->
+
+        <!--                <TextView-->
+        <!--                    android:id="@+id/cartonIDBorder"-->
+        <!--                    android:layout_width="fill_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginTop="13dp"-->
+        <!--                    android:background="@drawable/input_border"-->
+        <!--                    android:paddingVertical="10dp" />-->
+
+        <!--                <TextView-->
+        <!--                    android:id="@+id/cartonIDLabel"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginStart="12dp"-->
+        <!--                    android:background="#f5f5f5"-->
+        <!--                    android:paddingHorizontal="5dp"-->
+        <!--                    android:text="@string/cid"-->
+        <!--                    android:textColor="@color/black" />-->
+
+        <!--                <TextView-->
+        <!--                    android:id="@+id/cartonID"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginStart="17dp"-->
+        <!--                    android:layout_marginTop="22dp"-->
+        <!--                    android:textColor="@color/black"-->
+        <!--                    android:textSize="14sp" />-->
+
+        <!--            </RelativeLayout>-->
+
+        <!--            <RelativeLayout-->
+        <!--                android:id="@+id/textViewLayout2"-->
+        <!--                android:layout_width="fill_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_below="@id/textViewLayout"-->
+        <!--                android:background="@color/white"-->
+        <!--                android:padding="10dp">-->
+
+        <!--                <TextView-->
+        <!--                    android:id="@+id/textView"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:paddingLeft="15dp"-->
+        <!--                    android:text="@string/cid"-->
+        <!--                    android:textSize="14sp" />-->
+
+        <!--                <TextView-->
+        <!--                    android:id="@+id/cartonID"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_alignParentRight="true"-->
+        <!--                    android:layout_marginRight="30dp"-->
+        <!--                    android:textSize="14sp" />-->
+
+        <!--            </RelativeLayout>-->
+
+        <!--        </LinearLayout>-->
+
+        <!--        <LinearLayout-->
+        <!--            android:id="@+id/ll1"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_below="@id/ll2"-->
+        <!--            android:layout_marginTop="15dp"-->
+        <!--            android:gravity="center_vertical"-->
+        <!--            android:paddingStart="@dimen/space_24x"-->
+        <!--            android:paddingEnd="@dimen/space_24x"-->
+        <!--            app:layout_constraintTop_toTopOf="parent">-->
+
+        <!--            <RelativeLayout-->
+        <!--                android:id="@+id/reasonViewLayout"-->
+        <!--                android:layout_width="fill_parent"-->
+        <!--                android:layout_height="wrap_content">-->
+
+        <!--                <TextView-->
+        <!--                    android:id="@+id/reasonBorder"-->
+        <!--                    android:layout_width="fill_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginTop="13dp"-->
+        <!--                    android:background="@drawable/input_border"-->
+        <!--                    android:paddingVertical="10dp" />-->
+
+        <!--                <TextView-->
+        <!--                    android:id="@+id/reasonLabel"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginStart="12dp"-->
+        <!--                    android:background="#f3f3f3"-->
+        <!--                    android:paddingHorizontal="5dp"-->
+        <!--                    android:text="@string/reason"-->
+        <!--                    android:textColor="@color/black" />-->
+
+        <!--                <Spinner-->
+        <!--                    android:id="@+id/spinner"-->
+        <!--                    android:layout_width="fill_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginTop="22dp"-->
+        <!--                    android:paddingHorizontal="17dp"-->
+        <!--                    android:background="@color/transparent" />-->
+
+        <!--            </RelativeLayout>-->
+
+        <!--&lt;!&ndash;            <RelativeLayout&ndash;&gt;-->
+        <!--&lt;!&ndash;                android:id="@+id/textViewLayout"&ndash;&gt;-->
+        <!--&lt;!&ndash;                android:layout_width="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;                android:background="@color/white"&ndash;&gt;-->
+        <!--&lt;!&ndash;                android:padding="10dp">&ndash;&gt;-->
+
+        <!--&lt;!&ndash;                <Spinner&ndash;&gt;-->
+        <!--&lt;!&ndash;                    android:id="@+id/spinner"&ndash;&gt;-->
+        <!--&lt;!&ndash;                    android:layout_width="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;                    android:layout_alignParentRight="true"&ndash;&gt;-->
+        <!--&lt;!&ndash;                    android:layout_marginRight="15dp" />&ndash;&gt;-->
+
+        <!--&lt;!&ndash;                <TextView&ndash;&gt;-->
+        <!--&lt;!&ndash;                    android:id="@+id/tvResult"&ndash;&gt;-->
+        <!--&lt;!&ndash;                    android:layout_width="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;                    android:paddingLeft="15dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;                    android:text="@string/reason"&ndash;&gt;-->
+        <!--&lt;!&ndash;                    android:textSize="14sp" />&ndash;&gt;-->
+
+        <!--&lt;!&ndash;            </RelativeLayout>&ndash;&gt;-->
+
+        <!--        </LinearLayout>-->
+
+        <LinearLayout
+            android:id="@+id/reasonLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/horizontalScrollView"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/space_24x"
+            android:paddingEnd="@dimen/space_24x"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:id="@+id/reasonViewLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/reasonView"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:background="@drawable/rectangle_1"
+                    android:paddingHorizontal="17dp"
+                    android:paddingVertical="10dp"
+                    android:text="Damage"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/reasonLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:background="@color/bg_grey"
+                    android:paddingHorizontal="5dp"
+                    android:text="Reason"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/icon_spinner"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_alignEnd="@+id/reasonView"
+                    android:layout_marginTop="27dp"
+                    android:layout_marginEnd="17dp"
+                    android:src="@drawable/icon_spinner" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/reasonDropdown"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_2"
+                android:visibility="invisible">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_marginHorizontal="17dp"
+                    android:background="#e5e2dc" />
+
+                <TextView
+                    android:id="@+id/reasonDamaged"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="17dp"
+                    android:paddingVertical="7dp"
+                    android:text="Damaged"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/reasonWet"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/reasonDamaged"
+                    android:paddingHorizontal="17dp"
+                    android:paddingVertical="7dp"
+                    android:text="Wet"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/reasonDeformed"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/reasonWet"
+                    android:paddingHorizontal="17dp"
+                    android:paddingVertical="7dp"
+                    android:text="Deformed"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/button_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:paddingStart="@dimen/space_24x"
+            android:paddingEnd="@dimen/space_24x">
+
+            <Button
+                android:id="@+id/save_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/button_cancel"
+                android:text="Save"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

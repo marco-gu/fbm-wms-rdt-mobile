@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.maersk.fbm.rdt_mobile" >
 
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -10,8 +11,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RDTMobile"
         android:usesCleartextTraffic="true" >
+<!--        <activity-->
+<!--            android:name=".MainActiviy"-->
+<!--            android:configChanges="orientation|keyboardHidden|keyboard|screenSize"-->
+<!--            android:exported="true"-->
+<!--            android:launchMode="singleTop"-->
+<!--            android:screenOrientation="portrait" >-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
         <activity
-            android:name=".MainActiviy"
+            android:name=".ImageCaptureActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize"
             android:exported="true"
             android:launchMode="singleTop"

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.WindowInsets;
 import android.webkit.WebSettings;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,7 +28,7 @@ public class MainActiviy extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         dWebView = getView(R.id.webview);
-        dWebView.loadUrl("http://192.168.3.5:8080/");
+        dWebView.loadUrl("http://192.168.14.15:8080/");
         DWebView.setWebContentsDebuggingEnabled(true);
         dWebView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
 
