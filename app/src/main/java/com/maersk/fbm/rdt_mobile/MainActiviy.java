@@ -1,18 +1,25 @@
 package com.maersk.fbm.rdt_mobile;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowInsets;
 import android.webkit.WebSettings;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.maersk.fbm.rdt_mobile.utils.DWebView;
+import com.maersk.fbm.rdt_mobile.bridge.JsApi;
+import com.maersk.fbm.rdt_mobile.utils.MessageEvent;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
+import java.util.Timer;
 
 public class MainActiviy extends AppCompatActivity {
 
@@ -28,10 +35,10 @@ public class MainActiviy extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         dWebView = getView(R.id.webview);
-        dWebView.loadUrl("http://192.168.14.15:8080/");
+        dWebView.loadUrl("http://192.168.3.46:8080/");
         DWebView.setWebContentsDebuggingEnabled(true);
         dWebView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
-
+        dWebView.addJavascriptObject(new JsApi(this), null);
         // fullscreen by code
         hide();
     }
@@ -72,4 +79,24 @@ public class MainActiviy extends AppCompatActivity {
             }
         }
     };
+
+    @Override
+    protected void onStart() {
+        EventBus.getDefault().register(this);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        EventBus.getDefault().unregister(this);
+        super.onStop();
+    }
+
+    @Subscribe()
+    public void onEventMainThread(MessageEvent messageEvent) {
+        if (messageEvent.type.equals(this.getString(R.string.image_capture_activity))) {
+            Intent intent = new Intent(getApplicationContext(), ImageCaptureActivity.class);
+            startActivityForResult(intent, 0);
+        }
+    }
 }
