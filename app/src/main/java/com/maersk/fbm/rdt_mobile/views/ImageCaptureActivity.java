@@ -399,8 +399,7 @@ public class ImageCaptureActivity extends AppCompatActivity {
             File files = Environment.getExternalStorageDirectory();
             File[] pp = files.listFiles();
             for (File file : pp) {
-                Log.d("", " 文件名：" + file.getName() + "文件路径 ：" + file.getAbsolutePath());
-
+                Log.d("", " file：" + file.getName() + "file path ：" + file.getAbsolutePath());
             }
             String path = Environment.getExternalStorageDirectory() + "/RDT/";
             File mImageFile = new File(path);
@@ -411,22 +410,22 @@ public class ImageCaptureActivity extends AppCompatActivity {
             String fileName = path + "IMG_" + timeStamp + ".jpg";
             image.imagePath = fileName;
             FileOutputStream fos = null;
-//            try {
-//                fos = new FileOutputStream(fileName);
-//                fos.write(bytes, 0, bytes.length);
-//                msg.obj = image;
-//                mHandler.sendMessage(msg);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            } finally {
-//                if (fos != null) {
-//                    try {
-//                        fos.close();
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            }
+            try {
+                fos = new FileOutputStream(fileName);
+                fos.write(bytes, 0, bytes.length);
+                msg.obj = image;
+                mHandler.sendMessage(msg);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (fos != null) {
+                    try {
+                        fos.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
         }
     }
 
