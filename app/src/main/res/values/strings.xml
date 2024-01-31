@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">RDT-Mobile</string>
+    <string name="enable_camera">ENABLE_CAMERA</string>
+    <string name="image_capture_activity">IMAGE_CAPTURE_ACTIVITY</string>
 </resources>

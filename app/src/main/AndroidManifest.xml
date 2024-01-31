@@ -14,7 +14,7 @@
         android:theme="@style/Theme.RDTMobile"
         android:usesCleartextTraffic="true" >
         <activity
-            android:name=".views.ImageCaptureActivity"
+            android:name=".MainActiviy"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize"
             android:exported="true"
             android:launchMode="singleTop"
@@ -25,18 +25,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<!--        <activity-->
-<!--            android:name=".MainActiviy"-->
-<!--            android:configChanges="orientation|keyboardHidden|keyboard|screenSize"-->
-<!--            android:exported="true"-->
-<!--            android:launchMode="singleTop"-->
-<!--            android:screenOrientation="portrait" >-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
+        <activity
+            android:name=".views.ImageCaptureActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>
