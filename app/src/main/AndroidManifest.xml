@@ -12,6 +12,7 @@
         android:hardwareAccelerated="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.RDTMobile"
+        android:requestLegacyExternalStorage="true"
         android:usesCleartextTraffic="true" >
         <activity
             android:name=".MainActiviy"

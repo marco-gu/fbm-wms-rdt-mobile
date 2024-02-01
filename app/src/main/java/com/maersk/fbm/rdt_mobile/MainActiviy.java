@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.maersk.fbm.rdt_mobile.utils.DWebView;
 import com.maersk.fbm.rdt_mobile.bridge.JsApi;
 import com.maersk.fbm.rdt_mobile.utils.MessageEvent;
+import com.maersk.fbm.rdt_mobile.views.ImageCaptureActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -35,12 +36,10 @@ public class MainActiviy extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         dWebView = getView(R.id.webview);
-        dWebView.loadUrl("http://192.168.3.46:8080/");
+        dWebView.loadUrl("http://192.168.1.17:8080/");
         DWebView.setWebContentsDebuggingEnabled(true);
         dWebView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
         dWebView.addJavascriptObject(new JsApi(this), null);
-        // fullscreen by code
-        hide();
     }
 
     private void hide() {

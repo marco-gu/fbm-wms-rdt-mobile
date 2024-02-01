@@ -134,7 +134,7 @@ public class ImageCaptureActivity extends AppCompatActivity {
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(dip2px(ImageCaptureActivity.this, 74), dip2px(ImageCaptureActivity.this, 74));
         DeleteImageView deleteImageView = new DeleteImageView(ImageCaptureActivity.this);
         Bitmap bitMap = rotateBitmapByDegree(BitmapFactory.decodeFile(image.imagePath), getBitmapDegree(image.imagePath));
-        layoutParams.setMargins(-20, 0, 0, 0);
+        layoutParams.setMargins(-10, 0, 0, 0);
         deleteImageView.setOnLongClickListener(v -> {
             enterDeleteMode();
             return true;
@@ -396,11 +396,6 @@ public class ImageCaptureActivity extends AppCompatActivity {
             byte[] bytes = new byte[buffer.capacity()];
             buffer.get(bytes);
             ImageEntity image = new ImageEntity();
-            File files = Environment.getExternalStorageDirectory();
-            File[] pp = files.listFiles();
-            for (File file : pp) {
-                Log.d("", " file：" + file.getName() + "file path ：" + file.getAbsolutePath());
-            }
             String path = Environment.getExternalStorageDirectory() + "/RDT/";
             File mImageFile = new File(path);
             if (!mImageFile.exists()) {
