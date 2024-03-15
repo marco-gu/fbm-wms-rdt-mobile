@@ -7,6 +7,7 @@ import android.content.Context;
 import com.maersk.fbm.rdt_mobile.R;
 import com.maersk.fbm.rdt_mobile.utils.CompletionHandler;
 import com.maersk.fbm.rdt_mobile.utils.MessageEvent;
+import com.maersk.fbm.rdt_mobile.utils.SharedPreferenceUtil;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -26,8 +27,9 @@ public class JsApi {
         return "FAIL";
     }
 
-//    @JavascriptInterface
-//    public void testAsyn(Object msg, CompletionHandler handler) {
-//        handler.complete(msg+" [ asyn call]");
-//    }
+    @JavascriptInterface
+    public void getDevice(Object arg, CompletionHandler<String> handler) {
+        handler.complete("CT45");
+    }
+
 }
