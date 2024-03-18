@@ -34,7 +34,8 @@ public class MainActiviy extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         dWebView = getView(R.id.webview);
-        dWebView.loadUrl("http://172.16.30.66:8081/");
+        dWebView.loadUrl("http://10.4.1.89:8080/");
+
         DWebView.setWebContentsDebuggingEnabled(true);
         dWebView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
         dWebView.addJavascriptObject(new JsApi(this), null);
