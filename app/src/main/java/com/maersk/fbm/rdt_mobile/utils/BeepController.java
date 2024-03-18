@@ -18,7 +18,7 @@ public class BeepController {
      * Calls playSound based on if the scan was good/bad
      * @param isGood - which beep needs to be played
      */
-    public void beep(boolean isGoods){
+    public void beep(boolean isGood){
         playSound(isGood ? R.raw.beep_yes : R.raw.beep_no);
     }
 
