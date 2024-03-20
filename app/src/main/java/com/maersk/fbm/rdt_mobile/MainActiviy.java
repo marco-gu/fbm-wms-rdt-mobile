@@ -4,9 +4,12 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowInsets;
 import android.webkit.WebSettings;
+import android.widget.FrameLayout;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,10 +22,13 @@ import com.maersk.fbm.rdt_mobile.views.ImageCaptureActivity;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
+import java.util.Map;
+
 
 public class MainActiviy extends AppCompatActivity {
 
     DWebView dWebView;
+    private Map<Integer, String> keycodeMap;
 
     public <T extends View> T getView(int viewId) {
         View view = findViewById(viewId);
@@ -34,7 +40,7 @@ public class MainActiviy extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         dWebView = getView(R.id.webview);
-        dWebView.loadUrl("http://10.4.1.89:8080/");
+        dWebView.loadUrl("http://172.16.30.66:8081/");
 
         DWebView.setWebContentsDebuggingEnabled(true);
         dWebView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
@@ -96,5 +102,17 @@ public class MainActiviy extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), ImageCaptureActivity.class);
             startActivityForResult(intent, 0);
         }
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getAction() == KeyEvent.ACTION_UP) {
+            switch (event.getKeyCode()) {
+                case 4:
+                    dWebView.callHandler("onBackPressed", new Object[]{});
+                    return false;
+            }
+        }
+        return super.dispatchKeyEvent(event);
     }
 }
